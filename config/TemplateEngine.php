@@ -11,7 +11,7 @@ class TemplateEngine {
             throw new Exception("El archivo de plantilla '$file' no existe.");
         }
 
-        $this->file = $file; 
+        $this->file = $file;
     }
 
     public function render($data = []) {
@@ -45,7 +45,7 @@ class TemplateEngine {
             return file_get_contents($matches[1]);
         }, $content);
 
-        $content = preg_replace_callback('/@foreach\s*\(([^)]+)\)\s*(.*?)\s*@endforeach/', function($matches) {
+        $content = preg_replace_callback('/@foreach\s*\(([^)]+)\)\s*(.*?)\s*@endforeach/s', function($matches) {
             return '<?php foreach (' . $matches[1] . '): ?>' . $matches[2] . '<?php endforeach; ?>';
         }, $content);
 

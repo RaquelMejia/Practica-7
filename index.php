@@ -8,7 +8,7 @@ require_once 'controller/MateriasController.php';
 require_once 'routes/Router.php';
 
 // Configurar el router
-$router = new Router ('/practica%207'); 
+$router = new Router ('/practica%2010'); 
 
 $router->get('/', 'AuthController@index');
 $router->get('/home', 'HomeController@index');

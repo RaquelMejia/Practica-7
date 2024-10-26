@@ -5,8 +5,8 @@ class HomeController extends BaseController
     public function index() 
     {
         $data = [
-            "nombre" => "Raquel Mejia",
-            "edad" => "25",
+            "nombre" => "",
+            "edad" => "",
             "items" => [
                 'item 1',
                 'item 2',

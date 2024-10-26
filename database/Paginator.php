@@ -44,4 +44,34 @@ class Paginator
     {
         return $this->currentPage > 1 ? $this->currentPage - 1 : null;
     }
-}
+
+    public function renderPagination($baseUrl, $queryParams = [])
+    {
+        $totalPages = $this ->getTotalPages();
+        $currentPage = $this ->getCurrentPage();
+
+        $query = http_build_query($queryParams);
+
+        $html = '<nav aria-label="Pagation page"><ul class="pagination">';
+
+        if($this->getPreviousPage()){
+            $html.='<li class="page-item"><a class="page-link" href='.$baseUrl.'?page='.$this->getPreviousPage().'&'.$query.'">Anterion</a></li>';
+        }
+        
+        for ($i=1; $i < $totalPages; $i++){
+            if ($i == $currentePage) {
+                $html .= '<li class="page-item active"><a class="page-link" href="#">'.$i.'</a></li> ';
+            }
+            else{
+                $html.='<li class="page-item"><a class="page-link" href="'.$baseUrl.'?page='.$i.'&'.$query.'">Anterior</a></li>';
+        }
+    }
+
+    if($this->getNextPage()){
+        $html .= '<li class="page-item"><a class="page-link" href="'.$baseUrl.'?page='.$this->getNextPage().'&'.$query.'">Siguiente</a></li>';
+    }
+
+    $html .= '</ul></nav>';
+    return $html;
+    }
+} 

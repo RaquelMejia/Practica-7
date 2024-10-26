@@ -1,7 +1,7 @@
 @extends('views/layout.php')
 
 @section('content-title')
-Dashboard
+Materias
 @endsection
 
 @section('content') 
@@ -13,6 +13,32 @@ Dashboard
 </div>
 
 <div class="row">
+
+<div class="col-lg-12">
+    <form action="/materias" method="get"></form>
+    <div class="row">
+        <div.col-md-6 class="grid margin stretch-card"></div-col-md-6>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                <i class="fa fa-search"></i>
+                Buscar materias 
+            </h4>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Ingresa el nombre de la materia"
+                    arial-label="Ingresa el nombre de la materia" name="search">
+
+                    <div class="input-group-append">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
@@ -32,23 +58,22 @@ Dashboard
                         </thead>
 
                         <tbody>
-                            <?php
-                              foreach($materias as $materia) {
-                            ?>
+                           
+                              @foreach($materias as $materia) 
                             <tr>
-                                <td><?=$materia->id?></td>
-                                <td><?=$materia->name?></td>
-                                <td><?=$materia->update_at?></td>
+                                <td>{{$materia->id}}</td>
+                                <td>{{$materia->name}}</td>
+                                <td>{{$materia->update_at}}</td>
                                 <td></td>
                             </tr>
-                            <?php
-
-                             }
-                            ?>
+                             @endforeach
                         </tbody>
 
                     </table>
 
+                    <div class="mt-3">
+                        {{$paginador}}
+                    </div>
                 </div>
                 </div>
             </div>
